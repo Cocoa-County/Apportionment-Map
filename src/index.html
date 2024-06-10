@@ -3,6 +3,11 @@
 <head>
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <style>
+        .striped tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <div id="map" style="height: 100vh;"></div>
