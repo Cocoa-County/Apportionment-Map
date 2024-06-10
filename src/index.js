@@ -1,11 +1,15 @@
 import L from 'leaflet';
 
-const map = L.map('map').setView([51.505, -0.09], 13);
+const map = L.map('map').setView([37.8534, -121.9018], 10); // Set view to Contra Costa County
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
+// Load GeoJSON data from a local file
+fetch('data.geojson')
+    .then(response => response.json())
+    .then(data => {
+        L.geoJSON(data).addTo(map);
+    })
+    .catch(error => console.error('Error:', error));
