@@ -26,15 +26,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Tar dist directory
-        run: tar -czvf dist.tar.gz dist
-
       - name: upload artifact to github pages
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact
         with:
-          name: github-pages
-          path: dist.tar.gz
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          path: 'dist/'
