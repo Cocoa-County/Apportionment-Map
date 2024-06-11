@@ -6,6 +6,9 @@ on:
 
 jobs:
   build-and-deploy:
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,3 +33,7 @@ jobs:
         with:
           name: github-pages
           path: dist.tar.gz
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
