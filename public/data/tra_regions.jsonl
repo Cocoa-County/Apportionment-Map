@@ -1,0 +1,39 @@
+{ "tra": "01000", "incorporated ": true, "name": "Antioch" }
+{ "tra": "02000", "incorporated ": true, "name": "Concord" }
+{ "tra": "03000", "incorporated ": true, "name": "El Cerrito" }
+{ "tra": "04000", "incorporated ": true, "name": "Hercules" }
+{ "tra": "05000", "incorporated ": true, "name": "Martinez" }
+{ "tra": "06000", "incorporated ": true, "name": "Pinole" }
+{ "tra": "07000", "incorporated ": true, "name": "Pittsburg" }
+{ "tra": "08000", "incorporated ": true, "name": "Richmond" }
+{ "tra": "09000", "incorporated ": true, "name": "Walnut Creek" }
+{ "tra": "10000", "incorporated ": true, "name": "Brentwood" }
+{ "tra": "11000", "incorporated ": true, "name": "San Pablo" }
+{ "tra": "12000", "incorporated ": true, "name": "Pleasant Hill" }
+{ "tra": "13000", "incorporated ": true, "name": "Clayton" }
+{ "tra": "14000", "incorporated ": true, "name": "Lafayette" }
+{ "tra": "15000", "incorporated ": true, "name": "Moraga" }
+{ "tra": "16000", "incorporated ": true, "name": "Danville" }
+{ "tra": "17000", "incorporated ": true, "name": "San Ramon" }
+{ "tra": "18000", "incorporated ": true, "name": "Orinda" }
+{ "tra": "19000", "incorporated ": true, "name": "Oakley" }
+{ "tra": "53000", "incorporated ": false, "name": "Antioch" }
+{ "tra": "58000", "incorporated ": false, "name": "Brentwood" }
+{ "tra": "60000", "incorporated ": false, "name": "Byron/Discovery Bay" }
+{ "tra": "61000", "incorporated ": false, "name": "Canyon" }
+{ "tra": "62000", "incorporated ": false, "name": "Crockett/Carquinez" }
+{ "tra": "62000", "incorporated ": false, "name": "Port Costa/Rodeo/Selby" }
+{ "tra": "66000", "incorporated ": false, "name": "Alamo/Blackhawk" }
+{ "tra": "66000", "incorporated ": false, "name": "Danville/San Ramon" }
+{ "tra": "68000", "incorporated ": false, "name": "Livermore Valley" }
+{ "tra": "72000", "incorporated ": false, "name": "Knightsen" }
+{ "tra": "73000", "incorporated ": false, "name": "Lafayette" }
+{ "tra": "76000", "incorporated ": false, "name": "Martinez/Vine Hill" }
+{ "tra": "77000", "incorporated ": false, "name": "Moraga" }
+{ "tra": "79000", "incorporated ": false, "name": "Diablo Valley" }
+{ "tra": "82000", "incorporated ": false, "name": "Oakley" }
+{ "tra": "83000", "incorporated ": false, "name": "Orinda" }
+{ "tra": "85000", "incorporated ": false, "name": "El Sobrante/Richmond" }
+{ "tra": "85000", "incorporated ": false, "name": "Hercules/Pinole" }
+{ "tra": "86000", "incorporated ": false, "name": "Pittsburg" }
+{ "tra": "98000", "incorporated ": false, "name": "Walnut Creek" }
