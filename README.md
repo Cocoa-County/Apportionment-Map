@@ -2,6 +2,10 @@
 
 This is an interactive property tax apportionment map. It uses the Leaflet.js library to create a map and markers.
 
+## Demo
+
+https://cocoa-county.github.io/Apportionment-Map/
+
 ## Installation
 
 1. Clone the repository
