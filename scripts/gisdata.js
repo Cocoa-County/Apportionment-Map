@@ -106,15 +106,28 @@ getAllData().then(async allData => {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  const outputPath = path.join(dir, 'data.geojson');
+  const outputGISPath = path.join(dir, 'data.geojson');
+  const outputDataPath = path.join(dir, 'districtData.json');
 
   // Add apportionment rates to each feature
-  const allDataWithRates = [];
+  const finalGISData = [];
+  const districtData = {};
+
   for (const feature of allData) {
     const tra = feature.properties.TRA;
     const apportionmentRates = await getRates(tra);
 
-    allDataWithRates.push({
+    apportionmentRates.forEach(rate => {
+      if (!districtData[rate.name]) {
+        districtData[rate.name] = {
+          rates: {}
+        };
+      }
+
+      districtData[rate.name].rates[tra] = rate.rate;
+    });
+
+    finalGISData.push({
       ...feature,
       properties: {
         ...feature.properties,
@@ -124,7 +137,8 @@ getAllData().then(async allData => {
   }
 
   // Write the GeoJSON data to a file
-  fs.writeFileSync(outputPath, JSON.stringify({ type: 'FeatureCollection', features: allDataWithRates }));
+  fs.writeFileSync(outputGISPath, JSON.stringify({ type: 'FeatureCollection', features: finalGISData }));
+  fs.writeFileSync(outputDataPath, JSON.stringify(districtData));
 }).catch(err => {
   console.error('Error:', err);
 });
