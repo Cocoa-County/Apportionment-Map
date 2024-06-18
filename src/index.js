@@ -171,7 +171,7 @@ map.on('popupclose', function(e) {
 });
 
 // Load GeoJSON data from a local file
-fetch('data.geojson')
+fetch('data/data.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
