@@ -3,14 +3,15 @@ const https = require('https');
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
+const { exit } = require('process');
 
 function getRates(tra) {
   console.log('Getting rates for TRA:', tra);
   return new Promise((resolve, reject) => {
-    const url = `http://cccounty.oli.us/EA9248/TRA${tra.substring(1)}.htm`;
+    const url = `https://blrenewal.cctax.us/tra/EA9248/TRA${tra.substring(1)}.htm`;
     console.log('URL:', url);
 
-    http.get(url, res => {
+    https.get(url, res => {
       let data = '';
 
       res.on('data', chunk => {
