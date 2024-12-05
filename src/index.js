@@ -16,6 +16,78 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// Create a title screen
+function createTitleScreen() {
+    const titleScreen = L.DomUtil.create('div', 'title-screen');
+    titleScreen.style.position = 'fixed';
+    titleScreen.style.top = '0';
+    titleScreen.style.left = '0';
+    titleScreen.style.width = '100vw';
+    titleScreen.style.height = '100vh';
+    titleScreen.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    titleScreen.style.display = 'flex';
+    titleScreen.style.justifyContent = 'center';
+    titleScreen.style.alignItems = 'center';
+    titleScreen.style.zIndex = '1000';
+
+    const titleContent = L.DomUtil.create('div', 'title-content', titleScreen);
+    titleContent.style.backgroundColor = '#f8f9fa'; // Light gray background
+    titleContent.style.padding = '40px';
+    titleContent.style.borderRadius = '10px';
+    titleContent.style.textAlign = 'center';
+    titleContent.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+
+    const titleText = L.DomUtil.create('h1', undefined, titleContent);
+    titleText.textContent = 'Contra Costa County Property Tax Apportionment Map';
+    titleText.style.marginBottom = '20px';
+    titleText.style.color = '#333';
+
+    const descriptionText = L.DomUtil.create('p', undefined, titleContent);
+    descriptionText.textContent = 'This map illustrates the distribution of property taxes to local agencies within Contra Costa County, CA for the 2023-24 tax year.';
+    descriptionText.style.marginBottom = '20px';
+    descriptionText.style.color = '#555';
+
+    const disclaimerText = L.DomUtil.create('p', undefined, titleContent);
+    disclaimerText.textContent = 'Disclaimer: This map was created by a third party without collaboration or authorization by Contra Costa County.';
+    disclaimerText.style.marginBottom = '20px';
+    disclaimerText.style.color = '#ff0000';
+
+    const sourceCodeLink = L.DomUtil.create('p', undefined, titleContent);
+    sourceCodeLink.innerHTML = 'Source code: <a href="https://github.com/Cocoa-County/Apportionment-Map" target="_blank" style="color: #007bff;">GitHub</a>';
+    sourceCodeLink.style.marginBottom = '10px';
+
+    const dataSourceInfo = L.DomUtil.create('p', undefined, titleContent);
+    dataSourceInfo.innerHTML = `<i>Generated using public data<br />
+        <a href="https://www.contracosta.ca.gov/6581/Where-Your-Taxes-Go" target="_blank" style="color: #007bff;">2023-24 Tax Apportionment Data</a><br />
+        <a href="https://services6.arcgis.com/snwvZ3EmaoXJiugR/ArcGIS/rest/services/Contra_Costa_2023_Roll_Year/FeatureServer/" target="_blank" style="color: #007bff;">Tax Rate Area GIS Shape Data</a></i>`;
+    dataSourceInfo.style.marginBottom = '20px';
+
+    const startButton = L.DomUtil.create('button', undefined, titleContent);
+    startButton.textContent = 'Enter';
+    startButton.style.padding = '10px 20px';
+    startButton.style.fontSize = '16px';
+    startButton.style.color = 'white';
+    startButton.style.backgroundColor = '#007bff';
+    startButton.style.border = 'none';
+    startButton.style.borderRadius = '5px';
+    startButton.style.cursor = 'pointer';
+    startButton.style.transition = 'background-color 0.3s';
+    startButton.onmouseover = function() {
+        startButton.style.backgroundColor = '#0056b3';
+    };
+    startButton.onmouseout = function() {
+        startButton.style.backgroundColor = '#007bff';
+    };
+    startButton.onclick = function() {
+        document.body.removeChild(titleScreen);
+    };
+
+    document.body.appendChild(titleScreen);
+}
+
+// Show the title screen
+createTitleScreen();
+
 // SearchBar Component
 function SearchBar(map) {
     const div = L.DomUtil.create('div');
@@ -77,6 +149,9 @@ info.onAdd = function () {
     this._div.style.padding = '10px'; // add some padding
     this._div.style.border = '1px solid black'; // add a border
     this._div.style.display = 'none'; // initially hide the sidebar
+    this._div.style.maxHeight = '400px'; // set max height
+    this._div.style.overflowY = 'auto'; // make it scrollable vertically
+    
     this.update();
 
     return this._div;
@@ -178,5 +253,7 @@ fetch('data.geojson')
             onEachFeature: onEachFeature
         }).addTo(map);
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+    });
 console.log(map);
